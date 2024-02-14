@@ -5,13 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node --watch --env-file .env ./src/app.js",
+    "start": "node --watch ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "carlos",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.4",
     "express": "^4.18.2",
     "sqlite3": "^5.1.7"
   }

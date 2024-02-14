@@ -1,24 +1,21 @@
 import crypto from "crypto";
+import { IV, KEY, TYPE, ALGORITHM } from "./config.js";
 
-const algorithm = process.env.ALGORITHM;
-const key = Buffer.from(process.env.key, process.env.TYPE);
-const iv = Buffer.from(process.env.iv, process.env.TYPE);
+const algorithm = ALGORITHM;
+const key = Buffer.from(KEY, TYPE);
+const iv = Buffer.from(IV, TYPE);
 
 const decrypt = (encryptedPassword) => {
   const decipher = crypto.createDecipheriv(algorithm, key, iv);
-  let decryptedPassword = decipher.update(
-    encryptedPassword,
-    process.env.TYPE,
-    "utf8"
-  );
+  let decryptedPassword = decipher.update(encryptedPassword, TYPE, "utf8");
   decryptedPassword += decipher.final("utf8");
   return decryptedPassword;
 };
 
 const encrypt = (password) => {
   const cipher = crypto.createCipheriv(algorithm, key, iv);
-  let encryptedPassword = cipher.update(password, "utf8", process.env.TYPE);
-  encryptedPassword += cipher.final(process.env.TYPE);
+  let encryptedPassword = cipher.update(password, "utf8", TYPE);
+  encryptedPassword += cipher.final(TYPE);
   return encryptedPassword;
 };
 
