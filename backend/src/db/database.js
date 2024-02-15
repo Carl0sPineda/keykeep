@@ -1,12 +1,36 @@
-import sqlite3 from "sqlite3";
+import Sequelize from "sequelize";
 
-const db = new sqlite3.Database("keykeep.sql");
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "keykeep.sqlite",
+});
 
-db.run(`CREATE TABLE IF NOT EXISTS keys (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT NOT NULL,
-    website TEXT NOT NULL,
-    password TEXT NOT NULL
-)`);
+const Key = sequelize.define(
+  "key",
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    username: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+    website: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+    password: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+  },
+  {
+    timestamps: false,
+  }
+);
 
-export default db;
+sequelize.sync();
+
+export default Key;
