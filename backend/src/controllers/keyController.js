@@ -5,17 +5,12 @@ import {
   successHandler,
 } from "../middleware/errorHandlers.js";
 import { decrypt, encrypt } from "../utils/crypto.js";
+import { getPaginatedKeys } from "../utils/pagination.js";
 
 export const getAllKeys = async (req, res) => {
   try {
-    const keys = await Key.findAll({ order: [["id", "DESC"]] });
-    const keysWithOriginalPassword = keys.map((key) => ({
-      id: key.id,
-      username: key.username,
-      website: key.website,
-      password: decrypt(key.password),
-    }));
-    res.json(keysWithOriginalPassword);
+    const { keys, totalPages } = await getPaginatedKeys(req.query);
+    res.json({ totalPages, keys });
   } catch (error) {
     errorHandler(res, error, "Internal Server Error");
   }
