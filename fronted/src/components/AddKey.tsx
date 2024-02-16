@@ -10,7 +10,7 @@ const AddKey = () => {
   const onSubmit = async (data: FormData) => {
     try {
       await addKeyMutation.mutateAsync(data);
-      toast.success("Dato agregado con éxito!");
+      toast.success("Datos agregados con éxito!");
       reset();
     } catch (error) {
       toast.error(`Error ${error} al agregar`);
@@ -24,6 +24,7 @@ const AddKey = () => {
           <input
             type="text"
             id="website"
+            required
             className="w-full bg-gray-800 rounded border bg-opacity-40 border-gray-700 focus:ring-2 focus:ring-purple-900 focus:bg-transparent focus:border-purple-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             placeholder="instagram.com"
             autoComplete="off"
