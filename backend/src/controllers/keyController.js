@@ -5,6 +5,7 @@ import {
   successHandler,
 } from "../middleware/errorHandlers.js";
 import { decrypt, encrypt } from "../utils/crypto.js";
+import generatePassword from "generate-password";
 
 export const getAllKeys = async (req, res) => {
   try {
@@ -90,6 +91,21 @@ export const deleteKey = async (req, res) => {
       return notFoundHandler(res, id);
     }
     successHandler(res, id, "Deleted successfully");
+  } catch (error) {
+    errorHandler(res, error, "Internal Server Error");
+  }
+};
+
+export const generateKeys = async (req, res) => {
+  try {
+    const password = generatePassword.generate({
+      length: 12,
+      numbers: true,
+      symbols: true,
+      uppercase: true,
+      strict: true,
+    });
+    res.status(200).json({ password });
   } catch (error) {
     errorHandler(res, error, "Internal Server Error");
   }
