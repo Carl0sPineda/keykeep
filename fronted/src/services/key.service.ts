@@ -1,4 +1,4 @@
-import { Key, FormData } from "../interfaces/key.interface";
+import { Key, FormData, GKey } from "../interfaces/key.interface";
 import axios from "axios";
 
 const baseUrl = "http://localhost:8080/keys";
@@ -35,5 +35,14 @@ export const deleteKey = async (taskId: number): Promise<void> => {
     await axios.delete(`${baseUrl}/${taskId}`);
   } catch (error) {
     throw new Error("Failed to delete key");
+  }
+};
+
+export const generateKey = async (): Promise<GKey> => {
+  try {
+    const response = await axios.get(`${baseUrl}/generate`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to generate key");
   }
 };

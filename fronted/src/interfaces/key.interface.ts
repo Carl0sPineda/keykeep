@@ -7,3 +7,7 @@ export interface FormData {
 export interface Key extends FormData {
   id: number;
 }
+
+export interface GKey {
+  password: string;
+}
