@@ -29,7 +29,7 @@ const DataTable = () => {
           <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
             Sitio web
           </th>
-          <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">
+          <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
             Nombre de usuario
           </th>
           <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
@@ -44,12 +44,16 @@ const DataTable = () => {
       <tbody>
         {keys?.map((key) => (
           <tr key={key.id}>
-            <td className="px-4 py-3">{key.website}</td>
-            <td className="px-4 py-3">{key.username}</td>
-            <td className="px-4 py-3">
+            <td className="px-4 py-3 border-b border-gray-700" colSpan={1}>
+              {key.website}
+            </td>
+            <td className="px-4 py-3 border-b border-gray-700" colSpan={1}>
+              {key.username}
+            </td>
+            <td className="px-4 py-3 border-b border-gray-700" colSpan={1}>
               <span>{key.password.replace(/./g, "*")}</span>{" "}
             </td>
-            <td className="px-4 py-3">
+            <td className="px-4 py-3 border-b border-gray-700" colSpan={2}>
               <button
                 onClick={() => handleDelete(key.id)}
                 className="ml-2 inline-flex items-center justify-center w-6 h-6 bg-red-500 rounded-full hover:bg-red-600 focus:outline-none"
@@ -70,9 +74,6 @@ const DataTable = () => {
               </button>
             </td>
           </tr>
-          //   <tr>
-          //   <td className="border-b border-gray-700" colSpan={5}></td>
-          // </tr>
         ))}
       </tbody>
     </table>
