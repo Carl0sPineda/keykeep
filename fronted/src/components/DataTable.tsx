@@ -11,7 +11,7 @@ const DataTable = () => {
   const handleDelete = async (id: number) => {
     try {
       await deleteKeyMutation.mutateAsync(id);
-      toast.success("Data eliminado con éxito!");
+      toast.success("Datos eliminados con éxito!");
     } catch (error) {
       toast.error(`Ocurrió un error al eliminar el dato ${error}`);
     }

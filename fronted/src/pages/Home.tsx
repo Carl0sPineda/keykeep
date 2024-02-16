@@ -1,6 +1,7 @@
 import AddKey from "../components/AddKey";
 import DataTable from "../components/DataTable";
 import hero from "../assets/landing.svg";
+import RamdonGenerate from "../components/RamdonGenerate";
 
 const Home = () => {
   return (
@@ -57,6 +58,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <RamdonGenerate />
     </main>
   );
 };
