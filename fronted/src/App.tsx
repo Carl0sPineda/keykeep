@@ -1,5 +1,13 @@
+import Home from "./pages/Home";
+import { Toaster } from "react-hot-toast";
+
 const App = () => {
-  return <h1 className="text-4xl text-blue-600">App</h1>;
+  return (
+    <>
+      <Home />
+      <Toaster position="top-right" reverseOrder={false} />
+    </>
+  );
 };
 
 export default App;
