@@ -5,4 +5,7 @@
 html {
     scroll-behavior: smooth;
   }
-  
+
+.slide-in-fwd-top{animation:slide-in-fwd-top .4s cubic-bezier(.25,.46,.45,.94) both}
+
+ @keyframes slide-in-fwd-top{0%{transform:translateZ(-1400px) translateY(-800px);opacity:0}100%{transform:translateZ(0) translateY(0);opacity:1}}
